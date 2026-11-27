@@ -5,5 +5,5 @@ In this part, the objectives are:
 
 
 
-Note: 
+ 
 - Software Used in this part is MySQL relational database service available as part of IBM Skills Network Labs (SN Labs) Cloud IDE. SN Labs is a virtual lab environment used in data query I do here.
