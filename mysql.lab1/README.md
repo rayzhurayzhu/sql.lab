@@ -8,4 +8,4 @@ Load data into tables.
 
 
 
-# Connect to MySQL and phpMyAdmin directly in your Skills Network Labs environment.
+@ Connect to MySQL and phpMyAdmin directly in your Skills Network Labs environment.
