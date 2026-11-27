@@ -1,0 +1,6 @@
+Objectives
+After completing this lab, you will be able to use phpMyAdmin with MySQL to:
+
+Create a database.
+Create tables using SQL scripts
+Load data into tables
