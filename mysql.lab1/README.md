@@ -4,3 +4,8 @@ After completing this lab, you will be able to use phpMyAdmin with MySQL to:
 Create a database.
 Create tables using SQL scripts.
 Load data into tables.
+
+
+
+
+# Connect to MySQL and phpMyAdmin directly in your Skills Network Labs environment.
