@@ -29,3 +29,17 @@ SELECT D.DEP_NAME, E.F_NAME, E.L_NAME
 FROM EMPLOYEES as E, DEPARTMENTS as D
 WHERE E.DEP_ID = D.DEPT_ID_DEP
 ORDER BY D.DEP_NAME, E.L_NAME DESC;
+
+# For each department ID, retrieve the number of employees in the department.
+SELECT DEP_ID, COUNT(*)
+FROM EMPLOYEES
+GROUP BY DEP_ID;
+
+# For each department retrieve the number of employees in the department, and the average employee salary in the department.
+SELECT DEP_ID, COUNT(*), AVG(SALARY)
+FROM EMPLOYEES
+GROUP BY DEP_ID;
+
+
+
+
