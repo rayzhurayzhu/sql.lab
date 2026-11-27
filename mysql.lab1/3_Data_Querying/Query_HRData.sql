@@ -1,3 +1,19 @@
+# Retrieve only the EMPLOYEES records that correspond to jobs in the JOBS table.
+SELECT * FROM EMPLOYEES WHERE JOB_ID IN (SELECT JOB_IDENT FROM JOBS);
+
+# Retrieve only the list of employees whose JOB_TITLE is Jr. Designer.
+SELECT E.*
+FROM EMPLOYEES E
+INNER JOIN JOBS J
+        ON E.JOB_ID = J.JOB_IDENT
+     WHERE J.JOB_TITLE = "Jr. Designer";
+
+
+# Retrieve JOB information and who earn more than $70,000.
+SELECT JOB_TITLE, MIN_SALARY,MAX_SALARY,JOB_IDENT 
+  FROM JOBS WHERE JOB_IDENT IN (SELECT JOB_ID FROM EMPLOYEES WHERE SALARY > 70000 );
+
+
 # Execute a Table Expression for the EMPLOYEES table that excludes columns with sensitive employee data (i.e. does not include columns: SSN, B_DATE, SEX, ADDRESS, SALARY).
 SELECT * FROM ( SELECT EMP_ID, F_NAME, L_NAME, DEP_ID FROM EMPLOYEES) AS EMP4ALL;
 
