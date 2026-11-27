@@ -1,3 +1,15 @@
+# Execute a Table Expression for the EMPLOYEES table that excludes columns with sensitive employee data (i.e. does not include columns: SSN, B_DATE, SEX, ADDRESS, SALARY).
+SELECT * FROM ( SELECT EMP_ID, F_NAME, L_NAME, DEP_ID FROM EMPLOYEES) AS EMP4ALL;
+
+SELECT * EXCEPT (SSN, B_DATE, SEX, ADDRESS, SALARY) FROM EMPLOYEES;   -- BigQuery
+SELECT * EXCLUDE (SSN, B_DATE, SEX, ADDRESS, SALARY) FROM EMPLOYEES;  -- Snowflake, DuckDB
+
+
+#  Retrieve all employee records whose salary is lower than the average salary.
+SELECT * FROM EMPLOYEES
+WHERE SALARY < (SELECT AVG(SALARY) FROM EMPLOYEES);
+
+
 # The team A wants to see all employees whose address is in Elgin,IL.
 SELECT F_NAME , L_NAME
 FROM EMPLOYEES
