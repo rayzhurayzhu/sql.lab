@@ -92,3 +92,24 @@ if (df4 == -1){
 
 dbListTables(conn)
 
+# Load your tables in database
+crop_df <- read.csv('https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-RP0203EN-SkillsNetwork/labs/Final%20Project/Annual_Crop_Data.csv', colClasses=c(YEAR="character"))
+daily_df <- read.csv('https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-RP0203EN-SkillsNetwork/labs/Final%20Project/Daily_FX.csv', colClasses=c(DATE="character"))
+farm_df <- read.csv('https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-RP0203EN-SkillsNetwork/labs/Final%20Project/Monthly_Farm_Prices.csv', colClasses=c(DATE="character"))
+monthly_df <- read.csv('https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-RP0203EN-SkillsNetwork/labs/Final%20Project/Monthly_FX.csv', colClasses=c(DATE="character"))
+
+# Load into the tables created in Task 1.
+# append = TRUE keeps the tables' column types and primary keys.
+dbWriteTable(conn, "CROP_DATA",   crop_df,    append = TRUE, row.names = FALSE)
+dbWriteTable(conn, "FARM_PRICES", farm_df,    append = TRUE, row.names = FALSE)
+dbWriteTable(conn, "DAILY_FX",    daily_df,   append = TRUE, row.names = FALSE)
+dbWriteTable(conn, "MONTHLY_FX",  monthly_df, append = TRUE, row.names = FALSE)
+
+# Check: row counts should be 672, 2678, 1033 and 50
+dbGetQuery(conn, "SELECT 'CROP_DATA' AS tbl, COUNT(*) AS n FROM CROP_DATA
+                  UNION ALL SELECT 'FARM_PRICES', COUNT(*) FROM FARM_PRICES
+                  UNION ALL SELECT 'DAILY_FX',    COUNT(*) FROM DAILY_FX
+                  UNION ALL SELECT 'MONTHLY_FX',  COUNT(*) FROM MONTHLY_FX")
+
+# SQL queries using the RSQLite R package to solve the business problems.
+
